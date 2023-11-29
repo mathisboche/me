@@ -90,6 +90,31 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var startTouchX;
+            var nav = document.querySelector('.nav');
+    
+            document.addEventListener('touchstart', function(e) {
+                startTouchX = e.touches[0].clientX;
+            }, false);
+    
+            document.addEventListener('touchmove', function(e) {
+                var touchX = e.touches[0].clientX;
+                // Swipe vers la droite
+                if (startTouchX - touchX > 50) {
+                    // Affiche le menu
+                    nav.classList.add('show');
+                }
+                // Swipe vers la gauche
+                if (touchX - startTouchX > 50) {
+                    // Cache le menu
+                    nav.classList.remove('show');
+                }
+            }, false);
+        });
+    </script>
+    
     
     
 </body>
