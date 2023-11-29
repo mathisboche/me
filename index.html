@@ -74,11 +74,22 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('.nav-hamburger').addEventListener('click', function() {
-                document.querySelector('.nav').classList.toggle('show');
+            var hamburger = document.querySelector('.nav-hamburger');
+            var nav = document.querySelector('.nav');
+            var navLinks = nav.querySelectorAll('a');
+    
+            hamburger.addEventListener('click', function() {
+                nav.classList.toggle('show');
+            });
+    
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('show');
+                });
             });
         });
     </script>
+    
     
 </body>
 </html>
