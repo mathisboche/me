@@ -1,0 +1,1 @@
+// Code JavaScript de base pour l'interaction (à développer selon les besoins)

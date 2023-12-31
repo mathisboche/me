@@ -2,120 +2,40 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mathis Boche - Passion pour l'IA, les Échecs et le Tennis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/059bae2efb.js" crossorigin="anonymous"></script>
+    <title>Mathis Boche - Accueil</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Section Accueil -->
-    <div class="header">
-    <h1>Mathis Boche</h1>
-    <p>Intelligence Artificielle, Copywriting, Montage Vidéo, Échecs & Tennis</p>
-    </div>
+    <header>
+        <nav>
+            <!-- Ici, ajoutez les liens de votre menu -->
+        </nav>
+    </header>
 
-    <div class="nav-hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-<nav class="nav">
-    <a href="#about">À propos</a>
-    <a href="#skills">Compétences</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-    <!-- Section À propos de Moi -->
-    <section id="about">
-        <h2>À propos de Moi</h2>
-        <p>Description personnelle ici.</p>
-        <!-- Ajouter une image personnelle ici -->
+    <section id="accueil">
+        <!-- Contenu de la page d'accueil -->
     </section>
 
-    <!-- Section Mes Compétences -->
-    <section id="skills">
-        <h2>Mes Compétences</h2>
-        <div>
-            <h3>Montage Vidéo</h3>
-            <!-- Contenu de montage vidéo ici -->
-        </div>
-        <div>
-            <h3>Copywriting</h3>
-            <!-- Contenu de copywriting ici -->
-        </div>
-        <div>
-            <h3>Intelligence Artificielle</h3>
-            <!-- Contenu sur l'IA ici -->
-        </div>
+    <section id="apropos">
+        <!-- Section À Propos -->
     </section>
 
-    <!-- Section Portfolio -->
-    <section id="portfolio">
-        <h2>Portfolio</h2>
-        <!-- Contenu du portfolio ici -->
+    <section id="ia">
+        <!-- Section Passion pour l'IA -->
     </section>
 
-    <!-- Section Loisirs et Intérêts -->
-    <section>
-        <h2>Loisirs et Intérêts</h2>
-        <!-- Contenu sur les échecs et le tennis ici -->
+    <section id="tennis-echecs">
+        <!-- Section Tennis et Échecs -->
     </section>
 
-    <!-- Section Contact -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <!-- Formulaire de contact et liens vers les réseaux sociaux ici -->
+    <section id="blog">
+        <!-- Section Blog ou Actualités -->
     </section>
 
     <footer>
-        <p>© 2023 Mathis Boche</p>
+        <!-- Pied de page avec contact et liens sociaux -->
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var hamburger = document.querySelector('.nav-hamburger');
-            var nav = document.querySelector('.nav');
-            var navLinks = nav.querySelectorAll('a');
-    
-            hamburger.addEventListener('click', function() {
-                nav.classList.toggle('show');
-            });
-    
-            navLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    nav.classList.remove('show');
-                });
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var startTouchX;
-            var nav = document.querySelector('.nav');
-    
-            document.addEventListener('touchstart', function(e) {
-                startTouchX = e.touches[0].clientX;
-            }, false);
-    
-            document.addEventListener('touchmove', function(e) {
-                var touchX = e.touches[0].clientX;
-                // Swipe vers la droite
-                if (startTouchX - touchX > 50) {
-                    // Affiche le menu
-                    nav.classList.add('show');
-                }
-                // Swipe vers la gauche
-                if (touchX - startTouchX > 50) {
-                    // Cache le menu
-                    nav.classList.remove('show');
-                }
-            }, false);
-        });
-    </script>
-    
-    
-    
 </body>
 </html>
