@@ -1,0 +1,76 @@
+header {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative; /* Position relative pour le header */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.menu-hamburger {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.menu-hamburger .barre {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+nav {
+    display: none;
+    position: fixed; /* Position fixe pour le menu */
+    top: 0;
+    left: 0;
+    width: 100%; /* Pleine largeur */
+    height: 100%; /* Pleine hauteur */
+    background-color: rgba(0, 123, 255, 0.95);
+    z-index: 1; /* En-dessous du menu hamburger */
+    transition: transform 0.3s;
+    transform: translateY(-100%); /* Cache le menu au-dessus de la vue */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrer les liens verticalement */
+    align-items: center; /* Centrer les liens horizontalement */
+}
+
+nav.active {
+    transform: translateY(0); /* Fait apparaître le menu */
+}
+
+nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%; /* Définir une largeur fixe pour tous les boutons */
+    color: white;
+    padding: 20px; /* Augmenter le padding pour agrandir les boutons */
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-size: 1.8em; /* Augmenter la taille du texte */
+    border-radius: 5px; /* Arrondir les coins pour un aspect plus doux */
+    opacity: 0;
+}
+
+nav a:hover {
+    background-color: #FFC107;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

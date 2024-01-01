@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathis Boche - Accueil</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="Images/favicon.png">
 </head>
 <body>
     <header>
-        <nav>
-            <!-- Ici, ajoutez les liens de votre menu -->
-        </nav>
+        <div class="menu-hamburger" onclick="toggleMenu()">
+            <div class="barre"></div>
+            <div class="barre"></div>
+            <div class="barre"></div>
+        </div>
     </header>
+
+    <nav id="menu-principal">
+        <a href="#accueil">Accueil</a>
+        <a href="#apropos">À Propos</a>
+        <a href="#ia">IA</a>
+        <a href="#tennis-echecs">Tennis & Échecs</a>
+        <a href="#blog">Blog</a>
+    </nav>
 
     <section id="accueil">
         <!-- Contenu de la page d'accueil -->
@@ -36,6 +47,6 @@
     <footer>
         <!-- Pied de page avec contact et liens sociaux -->
     </footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
