@@ -33,6 +33,7 @@ header {
     width: 25px;
     height: 3px;
     background-color: white;
+    box-shadow: 0 0 0 0.1px black;
     margin: 5px 0;
     transition: 0.4s;
 }
@@ -120,17 +121,6 @@ nav a:hover {
     background: rgba(0, 0, 0, 0.75); /* Overlay noir semi-transparent */
     z-index: -1;
     backdrop-filter: blur(05px);
-}
-
-.accueil-bg::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0; /* Positionne le pseudo-élément en bas de la section */
-    height: 5%; /* Hauteur du dégradé, ajustez selon vos besoins */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, white 100%);
-    z-index: 1; /* Assurez-vous que cela est au-dessus du contenu de fond mais en dessous du contenu textuel */
 }
 
 .accueil-content {
@@ -281,26 +271,46 @@ nav a:hover {
     padding-top: 10px;
 }
 
-/* Class when bubble is clicked to show details */
-.timeline-bubble.active .timeline-details {
-    display: block;
-}
-
 .timeline-expand-btn {
     display: inline-block;
-    margin-left: 10px;
     cursor: pointer;
-    position: absolute; /* Positionnement absolu par rapport à timeline-bubble */
-    right: 10px; /* Espace du bord droit de la bulle */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 10px; /* Largeur du bouton */
+    height: 10px; /* Hauteur du bouton */
+    transform: translateY(-50%); /* Centrer verticalement par rapport à sa position */
+}
+
+.timeline-expand-btn span {
+    display: block;
+    position: absolute;
+    height: 2px; /* Épaisseur des lignes */
+    width: 100%; /* Longueur des lignes */
+    background-color: black; /* Couleur des lignes */
+    border-radius: 3px; /* Rayon pour les bords arrondis */
+    transition: all 0.3s ease;
+}
+
+.timeline-expand-btn span:first-child {
     top: 50%;
     transform: translateY(-50%);
-    transition: transform 0.3s ease;
+}
+
+.timeline-expand-btn span:last-child {
+    left: 50%;
+    width: 2px; /* Épaisseur des lignes (pour la barre verticale) */
+    height: 100%; /* Longueur des lignes (pour la barre verticale) */
+    transform: translateX(-50%);
 }
 
 /* Assurez-vous que le bouton plus n'affecte pas la logique du clic sur la bulle */
 .timeline-bubble .timeline-expand-btn {
     pointer-events: none;
 }
+
+
+
 
 /* Style du modal */
 .modal {
