@@ -2,15 +2,14 @@
     box-sizing: border-box;
 }
 
-
 body {
     margin: 0;
-    padding: 0; /* Cela supprimera les marges et les paddings par défaut du `body` */
+    padding: 0;
 }
 
 header {
-    margin: 20px; /* Ajoute une marge de 20px sur tous les côtés */
-    padding: 10px 20px; /* Rétablissez le padding interne pour le design */
+    margin: 20px;
+    padding: 10px 20px;
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
     color: white;
@@ -40,20 +39,20 @@ header {
 
 nav {
     display: none;
-    position: fixed; /* Position fixe pour le menu */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Pleine largeur */
-    height: 100%; /* Pleine hauteur */
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 123, 255, 0.95);
     backdrop-filter: blur(10px);
-    z-index: 2; /* En-dessous du menu hamburger */
+    z-index: 2;
     transition: transform 0.3s;
-    transform: translateY(-100%); /* Cache le menu au-dessus de la vue */
+    transform: translateY(-100%);
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrer les liens verticalement */
-    align-items: center; /* Centrer les liens horizontalement */
+    justify-content: center;
+    align-items: center;
 }
 
 nav.active {
@@ -159,4 +158,170 @@ nav a:hover {
     .responsive-break {
         display: block; /* Affichez le saut de ligne sur les petits écrans */
     }
+}
+
+.infographics-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.infographic {
+    text-align: center;
+}
+
+.infographic h3 {
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    font-size: 2em;
+    color: #333;
+}
+
+.timeline-container {
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+    padding-left: 32.5px;
+    padding-right: 32.5px;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background-color: #007BFF;
+    border-radius: 5px;
+    
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -5px;
+    width: 15px;
+    height: 15px;
+    background-color: #007BFF;
+    border-radius: 50%;
+    top: 15px;
+    z-index: 2;
+}
+
+.timeline-bubble {
+    position: relative;
+    left: 25px;
+    flex-direction: column;
+    width: fit-content;
+    max-width: 200px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.timeline-info {
+    position: relative;
+    flex-direction: column;
+    width: fit-content;
+    max-width: 200px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.timeline-date {
+    font-weight: bold;
+}
+
+.timeline-title {
+    padding-right: 40px;
+}
+
+.timeline-details {
+    display: none;
+    color: #666;
+    padding-top: 10px;
+}
+
+/* Class when bubble is clicked to show details */
+.timeline-bubble.active .timeline-details {
+    display: block;
+}
+
+.timeline-expand-btn {
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+    position: absolute; /* Positionnement absolu par rapport à timeline-bubble */
+    right: 10px; /* Espace du bord droit de la bulle */
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+/* Assurez-vous que le bouton plus n'affecte pas la logique du clic sur la bulle */
+.timeline-bubble .timeline-expand-btn {
+    pointer-events: none;
+}
+
+/* Style du modal */
+.modal {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Fond noir avec opacité */
+    backdrop-filter: blur(2px);
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Centré et 15% depuis le haut */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%; /* Vous pouvez ajuster la largeur si nécessaire */
+    border-radius: 5px;
+    opacity: 0; /* Commence transparent */
+    transform: scale(0.95); /* Commence légèrement réduit */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Quand le modal est visible */
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal.show .modal-content {
+    opacity: 1;
+    transform: scale(1); /* Passe à la taille normale */
+}
+
+/* Style du bouton de fermeture */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

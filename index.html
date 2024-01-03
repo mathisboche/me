@@ -35,8 +35,179 @@
         </div>
     </section>
 
-    <section id="apropos">
-        <!-- Section À Propos -->
+    <section id="apropos" class="section-apropos">
+        <h2 class="timeline-main-title">Chronologie d'une Passion</h2>
+        
+        <section id="apropos" class="section-apropos">
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+               
+                <div class="timeline-item" onclick="openModal('modalNaissance')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-bubble">
+                        <div class="timeline-info">
+                            <div class="timeline-date">2007</div>
+                            <div class="timeline-title">Naissance</div>
+                            <div class="timeline-expand-btn">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="openModal('modalCommencement du Tennis')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-bubble">
+                        <div class="timeline-info">
+                            <div class="timeline-date">2011</div>
+                            <div class="timeline-title">Commencement du Tennis</div>
+                            <div class="timeline-expand-btn">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="openModal('modalPic Tennis et Découverte des Échecs')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-bubble">
+                        <div class="timeline-info">
+                            <div class="timeline-date">2018</div>
+                            <div class="timeline-title">Pic Tennis et Découverte des Échecs</div>
+                            <div class="timeline-expand-btn">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="openModal('modalDéménagement à Paris')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-bubble">
+                        <div class="timeline-info">
+                            <div class="timeline-date">2019</div>
+                            <div class="timeline-title">Déménagement à Paris</div>
+                            <div class="timeline-expand-btn">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="openModal('modalConfinement Covid et Retour en Normandie')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-bubble">
+                        <div class="timeline-info">
+                            <div class="timeline-date">2020</div>
+                            <div class="timeline-title">Confinement Covid et Retour en Normandie</div>
+                            <div class="timeline-expand-btn">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="openModal('modalChampionnat de France Jeunes U14 (Échecs)')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-bubble">
+                        <div class="timeline-info">
+                            <div class="timeline-date">2021</div>
+                            <div class="timeline-title">Championnat de France Jeunes U14 (Échecs)</div>
+                            <div class="timeline-expand-btn">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="openModal('modalChampionnat de France Jeunes U16 (Échecs)')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-bubble">
+                        <div class="timeline-info">
+                            <div class="timeline-date">2022</div>
+                            <div class="timeline-title">Championnat de France Jeunes U16 (Échecs)</div>
+                            <div class="timeline-expand-btn">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="openModal('modalSortie de GPT-4')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-bubble">
+                        <div class="timeline-info">
+                            <div class="timeline-date">Avril 2023</div>
+                            <div class="timeline-title">Sortie de GPT-4</div>
+                            <div class="timeline-expand-btn">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="openModal('modalPrésent')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-bubble">
+                        <div class="timeline-info">
+                            <div class="timeline-date">2024</div>
+                            <div class="timeline-title">Présent</div>
+                            <div class="timeline-expand-btn">+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="infographics-container">
+            <div class="infographic">
+                <h3>Meilleur Classement<br>en Tennis</h3>
+                <p class="highlight">15/4</p>
+            </div>
+            <div class="infographic">
+                <h3>Classement Actuel<br>aux Échecs</h3>
+                <p class="highlight">1622 F</p>
+            </div>
+        </div>
+        <div id="modalNaissance" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalNaissance')">&times;</span>
+                <h2>Naissance</h2>
+                <p>Je suis né le 17 août 2007 à Fécamp.</p>
+            </div>
+        </div>
+        <div id="modalCommencement du Tennis" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalCommencement du Tennis')">&times;</span>
+                <h2>Commencement du Tennis</h2>
+                <p>Début du tennis à l'âge de 4 ans, début d'une passion pour le sport.</p>
+            </div>
+        </div>
+        <div id="modalPic Tennis et Découverte des Échecs" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalPic Tennis et Découverte des Échecs')">&times;</span>
+                <h2>Pic Tennis et Découverte des Échecs</h2>
+                <p>Classement 15/4 en tennis et entraînement avec la ligue de Normandie. Découverte des échecs et premier tournoi.</p>
+            </div>
+        </div>
+        <div id="modalDéménagement à Paris" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalDéménagement à Paris')">&times;</span>
+                <h2>Déménagement à Paris</h2>
+                <p>Arrivée sur Paris, continuation du tennis et adhésion à un club d'échecs en Île-de-France.</p>
+            </div>
+        </div>
+        <div id="modalConfinement Covid et Retour en Normandie" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalConfinement Covid et Retour en Normandie')">&times;</span>
+                <h2>Confinement Covid et Retour en Normandie</h2>
+                <p>Pratique des échecs à distance. Anecdote personnelle : adoption d'un renardeau en Normandie.</p>
+            </div>
+        </div>
+        <div id="modalChampionnat de France Jeunes U14 (Échecs)" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalChampionnat de France Jeunes U14 (Échecs)')">&times;</span>
+                <h2>Championnat de France Jeunes U14 (Échecs)</h2>
+                <p>Participation aux championnats de France jeunes U14 en échecs.</p>
+            </div>
+        </div>
+        <div id="modalChampionnat de France Jeunes U16 (Échecs)" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalChampionnat de France Jeunes U16 (Échecs)')">&times;</span>
+                <h2>Championnat de France Jeunes U16 (Échecs)</h2>
+                <p>Participation au championnat de France jeunes U16 en échecs. Découverte de l'intelligence artificielle.</p>
+            </div>
+        </div>
+        <div id="modalSortie de GPT-4" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalSortie de GPT-4')">&times;</span>
+                <h2>Sortie de GPT-4</h2>
+                <p>Poursuite de l'intérêt pour l'intelligence artificielle avec la sortie de GPT-4.</p>
+            </div>
+        </div>
+        <div id="modalPrésent" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modalPrésent')">&times;</span>
+                <h2>Présent</h2>
+                <p>16 ans, passionné par l'IA, les échecs et le tennis.</p>
+            </div>
+        </div>
+        
     </section>
 
     <section id="ia">
