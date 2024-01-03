@@ -21,21 +21,30 @@ function toggleMenu() {
 
 document.querySelectorAll('#menu-principal a').forEach(link => {
     link.addEventListener('click', event => {
-        event.preventDefault(); // Empêcher le comportement par défaut du lien
+        event.preventDefault();
         const href = link.getAttribute('href');
         const section = document.querySelector(href);
 
-        // Fermer le menu avant de commencer le défilement
+        // Ferme le menu hamburger
         toggleMenu();
 
-        // Attendre la fin de l'animation du menu avant de défiler
-        /*setTimeout(() => {
-            section.scrollIntoView({ behavior: 'smooth' });
-        }, 100); // Ajustez ce délai si nécessaire*/
-        
-        section.scrollIntoView({ behavior: 'smooth' });
-        
+        // Calcule la position de la section avec un décalage de 100px
+        const offsetTop = section.getBoundingClientRect().top + window.pageYOffset - 100;
+
+        // Défilement doux vers la position calculée
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
     });
+});
+
+
+document.getElementById('lienApropos').addEventListener('click', function(e) {
+    e.preventDefault(); // Empêche le comportement de lien par défaut
+
+    var apropos = document.querySelector('#apropos');
+    if (apropos) {
+        var offsetTop = apropos.getBoundingClientRect().top + window.pageYOffset - 100; // Calcul de la position avec un décalage de 100px
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' }); // Défilement doux vers la position calculée
+    }
 });
 
 function openModal(modalId) {

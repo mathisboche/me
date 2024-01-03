@@ -122,6 +122,17 @@ nav a:hover {
     backdrop-filter: blur(05px);
 }
 
+.accueil-bg::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0; /* Positionne le pseudo-élément en bas de la section */
+    height: 60%; /* Hauteur du dégradé, ajustez selon vos besoins */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
+    z-index: 1; /* Assurez-vous que cela est au-dessus du contenu de fond mais en dessous du contenu textuel */
+}
+
 .accueil-content {
     z-index: 1;
 }
@@ -158,6 +169,13 @@ nav a:hover {
     .responsive-break {
         display: block; /* Affichez le saut de ligne sur les petits écrans */
     }
+}
+
+
+.timeline-main-title {
+    text-align: center; /* Centre le texte horizontalement */
+    margin-top: 100px;   /* Ajoute une marge de 20px au-dessus */
+    margin-bottom: 50px; /* Ajoute une marge de 20px en dessous */
 }
 
 .infographics-container {
