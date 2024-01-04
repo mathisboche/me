@@ -390,3 +390,17 @@ nav a:hover {
     display: block; /* Assure que l'image n'a pas de marge autour d'elle */
     margin: 0 auto; /* Centre l'image si elle n'est pas aussi large que le modal */
 }
+
+/* Style initial des éléments avant l'apparition */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+}
+
+/* Style lorsque l'élément est visible */
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
