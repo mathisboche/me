@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const rect = el.getBoundingClientRect();
         const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
         return (
-            rect.top <= windowHeight * 0.65 && // Démarre l'animation lorsque l'élément atteint 75% du haut de l'écran
+            rect.top <= windowHeight * 0.50 && // Démarre l'animation lorsque l'élément atteint 75% du haut de l'écran
             rect.bottom >= 0
         );
     }
