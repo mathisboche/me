@@ -309,6 +309,25 @@ nav a:hover {
     pointer-events: none;
 }
 
+.timeline-image-bubble {
+    width: 75%; /* Adjust as necessary */
+    height: 100px; /* Adjust to maintain aspect ratio */
+    border-radius: 20px; /* Circular bubble for image */
+    overflow: hidden;
+    position: relative;
+    left: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 50px;
+    margin-top: -30px;
+}
+
+.timeline-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the bubble area */
+    display: block;
+}
+
 
 
 
@@ -329,7 +348,7 @@ nav a:hover {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 30% auto; /* Centré et 15% depuis le haut */
+    margin: 45% auto; /* Centré et 15% depuis le haut */
     padding: 20px;
     border: 1px solid #888;
     width: 75%; /* Vous pouvez ajuster la largeur si nécessaire */
