@@ -74,3 +74,33 @@ window.onclick = function(event) {
         }
     });
 }
+
+function openImageModal(modalId) {
+    // Utilisez la même logique que pour openModal pour cohérence
+    openModal(modalId);
+}
+
+// openModal et closeModal restent inchangés.
+
+// Assurez-vous que closeModal peut gérer la fermeture des deux types de modals
+function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (modal.classList.contains('show')) {
+        modal.classList.remove('show');
+        modal.addEventListener('transitionend', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = ''; // Réactive le défilement
+        }, { once: true });
+    } else {
+        // Si le modal est déjà en train de disparaître, rétablissez le scroll immédiatement
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; // Réactive le défilement
+    }
+}
+
+// Modifier légèrement window.onclick pour gérer correctement les clics sur l'arrière-plan
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+        closeModal(event.target.id);
+    }
+};

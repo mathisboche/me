@@ -383,3 +383,10 @@ nav a:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
+.modal-image {
+    width: 100%; /* Ajustez la largeur comme nécessaire */
+    height: auto; /* Maintient l'aspect ratio de l'image */
+    display: block; /* Assure que l'image n'a pas de marge autour d'elle */
+    margin: 0 auto; /* Centre l'image si elle n'est pas aussi large que le modal */
+}
