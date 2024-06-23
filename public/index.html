@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathis BOCHE</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="chessboardjs-1.0.0/css/chessboard-1.0.0.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Contenu principal -->
+    <div id="main-content">
+        <header>
+            <div class="header-content">
+                <div class="image-content">
+                    <img src="img/pp.png" alt="Photo de Mathis BOCHE" class="profile-photo">
+                </div>
+                <div class="text-content">
+                    <h1>MATHIS BOCHE</h1>
+                    <p>Passionné par les échecs, le tennis et l'IA</p>
+                </div>
+            </div>
+        </header>
+    </div>
+    
+    <!-- Effet de luminescence -->
+    <div id="luminescence"></div>
+    
+    <!-- Section à propos avec la chronologie -->
+    <section id="about">
+        <h2 class="section-title">Mon Parcours</h2>
+        <div class="timeline">
+            <div class="timeline-item" data-year="2007">
+                <h3>Naissance <span class="emoji">👶</span></h3>
+                <p>Je suis né le 17 août 2007 à Fécamp.</p>
+            </div>
+            <div class="timeline-item" data-year="2011">
+                <h3>Commencement du Tennis <span class="emoji">🎾</span></h3>
+                <p>Début du tennis à l'âge de 4 ans, début d'une passion pour le sport.</p>
+            </div>
+            <div class="timeline-item" data-year="2018">
+                <h3>Pic Tennis et Découverte des Échecs <span class="emoji">♟️</span></h3>
+                <p>Classement 15/4 en tennis et entraînement avec la ligue de Normandie. Découverte des échecs et premier tournoi.</p>
+            </div>
+            <div class="timeline-item" data-year="2019">
+                <h3>Déménagement à Paris <span class="emoji">🏙️</span></h3>
+                <p>Arrivée sur Paris, continuation du tennis et adhésion à un club d'échecs en Île-de-France.</p>
+            </div>
+            <div class="timeline-item" data-year="2020">
+                <h3>Confinement Covid et Retour en Normandie <span class="emoji">🦊</span></h3>
+                <p>Pratique des échecs à distance durant le confinement. Anecdote personnelle : un jeune renardeau sauvage devenait un visiteur fréquent dans notre jardin en Normandie.</p>
+            </div>
+            <div class="timeline-item" data-year="2021">
+                <h3>Championnat de France Jeunes U14 (Échecs) <span class="emoji">🏆</span></h3>
+                <p>Participation aux championnats de France jeunes U14 en échecs.</p>
+            </div>
+            <div class="timeline-item" data-year="2022">
+                <h3>Championnat de France Jeunes U16 (Échecs) <span class="emoji">🤖</span></h3>
+                <p>Participation au championnat de France jeunes U16 en échecs. Découverte de l'intelligence artificielle.</p>
+            </div>
+            <div class="timeline-item" data-year="2023">
+                <h3>Sortie de GPT-4 <span class="emoji">🚀</span></h3>
+                <p>Poursuite de l'intérêt pour l'intelligence artificielle avec la sortie de GPT-4.</p>
+            </div>
+            <div class="timeline-item" data-year="2024">
+                <h3>Présent <span class="emoji">🎉</span></h3>
+                <p>16 ans, passionné par l'IA, les échecs et le tennis.</p>
+            </div>
+        </div>
+    </section>    
+    <!-- Section Passions -->
+    <section id="passions">
+        <h2 class="section-title">Mes Passions</h2>
+        <div class="passion" id="echecs">
+            <h3>Échecs</h3>
+            <div class="chess-controls">
+                <h4>Mon ouverture avec les</h4>
+                <div class="toggle-switch">
+                    <input type="radio" id="selectWhite" name="color" value="white" checked>
+                    <label for="selectWhite">Blancs</label>
+                    <input type="radio" id="selectBlack" name="color" value="black">
+                    <label for="selectBlack">Noirs</label>
+                    <div class="slider"></div>
+                </div>
+            </div>           
+            <div id="chessboard" class="chess-board"></div>
+            <div class="chess-summary">
+                <p id="openingName" class="hidden">&nbsp;</p> <!-- Utilisation de l'espace insécable pour réserver l'espace -->
+                <p><strong>Standard :</strong> 1772</p>
+                <p><strong>Rapide :</strong> 1687</p>
+                <p><strong>Blitz :</strong> 1680</p>
+            </div>
+        </div>
+    </section>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="chessboardjs-1.0.0/js/chessboard-1.0.0.min.js"></script>
+    <script type="module">
+        import { Chess } from 'https://cdn.jsdelivr.net/npm/chess.js@0.13.1/chess.js';
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Luminescence effect
+            document.addEventListener("mousemove", function(e) {
+                const luminescence = document.getElementById("luminescence");
+                luminescence.style.left = e.clientX + "px";
+                luminescence.style.top = e.clientY + "px";
+            });
+
+            // Timeline visibility effect
+            const items = document.querySelectorAll(".timeline-item");
+
+            const isInViewport = (elem) => {
+                const bounding = elem.getBoundingClientRect();
+                return (
+                    bounding.top >= 0 &&
+                    bounding.left >= 0 &&
+                    bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            };
+
+            const run = () => {
+                items.forEach((item) => {
+                    if (isInViewport(item)) {
+                        item.classList.add("is-visible");
+                    }
+                });
+            };
+
+            // Darken background and other timeline items on hover
+            items.forEach(item => {
+                item.addEventListener("mouseenter", () => {
+                    document.body.classList.add("darken-background");
+                    items.forEach(i => {
+                        if (i !== item) {
+                            i.classList.add("darken");
+                        }
+                    });
+                });
+                item.addEventListener("mouseleave", () => {
+                    document.body.classList.remove("darken-background");
+                    items.forEach(i => {
+                        i.classList.remove("darken");
+                    });
+                });
+            });
+
+            // Events
+            window.addEventListener("load", run);
+            window.addEventListener("resize", run);
+            window.addEventListener("scroll", run);
+
+            // JavaScript pour le plateau d'échecs interactif
+            var chessBoard = document.getElementById('chessboard');
+            var chessInitialized = false;
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting && !chessInitialized) {
+                        chessInitialized = true; // Empêche l'initialisation multiple
+
+                        // Initialisation du plateau d'échecs
+                        var board = Chessboard('chessboard', {
+                            position: 'start',
+                            pieceTheme: 'img/chesspieces/wikipedia/{piece}.png'
+                        });
+
+                        var game = new Chess();
+
+                        var londonSystemMoves = [
+                            'd4', 'Nf6',
+                            'Nf3', 'g6',
+                            'Bf4', 'Bg7',
+                            'e3', 'O-O',
+                            'Be2', 'd6',
+                            'h3', 'c5',
+                            'c3', 'b6',
+                            'O-O'
+                        ];
+
+                        var sicilianDefenseMoves = [
+                            'e4', 'c5',
+                            'Nf3', 'Nc6',
+                            'd4', 'cxd4',
+                            'Nxd4', 'd6',
+                            'Nc3', 'Nf6',
+                            'f3', 'e6',
+                            'Be3', 'Be7',
+                            'Qd2', 'O-O',
+                            'O-O-O', 'a6',
+                            'g4', 'Nxd4',
+                            'Bxd4', 'b5'
+                        ];
+
+                        var currentMoves = [];
+                        var currentIndex = 0;
+                        var moveTimeout;
+
+                        function makeNextMove() {
+                            if (currentIndex >= currentMoves.length) return;
+                            game.move(currentMoves[currentIndex]);
+                            board.position(game.fen());
+                            currentIndex++;
+                            moveTimeout = setTimeout(makeNextMove, 1000);
+                        }
+
+                        function resetBoard(orientation) {
+                            clearTimeout(moveTimeout);
+                            board.orientation(orientation);
+                            board.start();
+                            game.reset();
+                            currentIndex = 0;
+                        }
+
+                        function showOpeningName(name) {
+                            var openingNameElement = document.getElementById('openingName');
+                            openingNameElement.innerText = name;
+                            openingNameElement.classList.remove('hidden');
+                        }
+
+                        // Commence le Système de Londres lorsque l'élément entre dans la vue
+                        resetBoard('white');
+                        currentMoves = londonSystemMoves;
+                        showOpeningName('Système de Londres');
+                        setTimeout(makeNextMove, 1000);
+
+                        // Configuration des événements pour les boutons
+                        document.getElementById('selectWhite').addEventListener('change', function() {
+                            if (this.checked) {
+                                resetBoard('white');
+                                currentMoves = londonSystemMoves;
+                                showOpeningName('Système de Londres');
+                                setTimeout(makeNextMove, 1000);
+                            }
+                        });
+
+                        document.getElementById('selectBlack').addEventListener('change', function() {
+                            if (this.checked) {
+                                resetBoard('black');
+                                currentMoves = sicilianDefenseMoves;
+                                showOpeningName('Défense Sicilienne');
+                                setTimeout(makeNextMove, 1000);
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 1.0 }); // Ajustez ce seuil selon vos besoins
+
+            observer.observe(chessBoard);
+        });
+    </script>
+</body>
+</html>

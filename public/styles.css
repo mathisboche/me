@@ -1,0 +1,289 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color 0.5s ease;
+}
+
+#main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.image-content {
+    margin-right: 20px;
+}
+
+.text-content {
+    text-align: left;
+    max-width: 400px; /* Optional: to limit the width of the text container */
+}
+
+.text-content h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.text-content p {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: box-shadow 0.3s, filter 0.3s;
+}
+
+.profile-photo:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    filter: brightness(1.2);
+}
+
+/* Effet de luminescence avec la souris */
+#luminescence {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, background 0.3s;
+    filter: blur(75px);
+    z-index: 1000; /* Make sure it's on top of other content */
+}
+
+/* Styles pour la chronologie */
+#about {
+    padding: 50px 20px;
+    background-color: #2a2a2a;
+    transition: background-color 0.5s ease;
+}
+
+.section-title {
+    font-size: 2em;
+    margin-top: 60px; /* Augmente l'espace en haut */
+    margin-bottom: 20px; /* Moins d'espace en bas */
+    text-align: center;
+    color: #ffffff;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    background: #333;
+    color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    width: 100%;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.timeline-item::before {
+    content: attr(data-year);
+    position: absolute;
+    top: 10px;
+    left: -60px;
+    background: #444;
+    color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.timeline-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:hover {
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1); /* Plus dispersé et plus flou */
+    filter: brightness(1.2);
+    z-index: 10; /* Ensure it appears above the overlay */
+}
+
+.timeline-item:hover .emoji {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item .emoji {
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+}
+
+/* Overlay to darken the rest of the page */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+    pointer-events: none; /* Ensure it doesn't interfere with mouse events */
+}
+
+body.darken-background::before {
+    background: rgba(0, 0, 0, 0.2); /* Adjust the opacity as needed */
+}
+
+/* Darken other timeline items */
+.timeline-item.darken {
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+/* Styles pour la section Passions */
+#passions {
+    padding: 50px 20px;
+    background-color: #2a2a2a;
+    transition: background-color 0.5s ease;
+}
+
+#passions .section-title {
+    font-size: 2em;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.passion {
+    background: #333;
+    color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.passion h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.chess-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chess-controls h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 200px;
+    height: 40px; /* Hauteur du toggle */
+    background-color: #4d4d4d;
+    border-radius: 20px; /* Border radius du toggle */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px; /* Marges internes */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch input[type="radio"] {
+    display: none;
+}
+
+.toggle-switch label {
+    flex: 1;
+    text-align: center;
+    line-height: 34px; /* Ajuster la ligne pour centrer verticalement le texte */
+    font-size: 1.2em;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
+    transition: color 0.3s ease;
+    margin: 0; /* Assure que le label prend toute la largeur disponible */
+}
+
+.toggle-switch .slider {
+    position: absolute;
+    top: 5px; /* Ajuster pour s'adapter aux nouvelles marges */
+    left: 5px;
+    width: calc(50% - 7px); /* Ajustement pour les marges des deux côtés */
+    height: calc(100% - 10px); /* Pour occuper toute la hauteur du toggle */
+    background-color: #000;
+    border-radius: calc(20px - 5px); /* Ajuster le border-radius pour correspondre à la hauteur */
+    transition: left 0.3s ease, width 0.3s ease;
+}
+
+input#selectWhite:checked ~ .slider {
+    left: 5px;
+}
+
+input#selectBlack:checked ~ .slider {
+    left: calc(50% + 2px); /* Ajustement pour les marges des deux côtés */
+}
+
+input#selectWhite:checked + label[for="selectWhite"],
+input#selectBlack:checked + label[for="selectBlack"] {
+    color: #ffffff;
+}
+
+
+
+.chess-board {
+    margin: 0 auto;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.chess-summary {
+    text-align: center;
+}
+
+#openingName {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+    min-height: 1.4em; /* Assure un espace réservé pour le nom de l'ouverture */
+}
+
+.hidden {
+    visibility: hidden; /* Garde l'espace sans afficher le contenu */
+}
