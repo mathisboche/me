@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 module.exports = async (req, res) => {
   try {
-    const response = await axios.get('https://ratings.fide.com/profile/651010240');
+    const response = await axios.get('https://ratings.fide.com/profile/651010259');
     const html = response.data;
     const $ = cheerio.load(html);
 
