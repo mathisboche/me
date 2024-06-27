@@ -87,9 +87,9 @@
             <div id="chessboard" class="chess-board"></div>
             <div class="chess-summary">
                 <p id="openingName" class="hidden">&nbsp;</p> <!-- Utilisation de l'espace insécable pour réserver l'espace -->
-                <p><strong>Standard :</strong> 1772</p>
-                <p><strong>Rapide :</strong> 1687</p>
-                <p><strong>Blitz :</strong> 1680</p>
+                <p><strong>Standard :</strong> <span id="standardElo">...</span></p>
+                <p><strong>Rapide :</strong> <span id="rapidElo">...</span></p>
+                <p><strong>Blitz :</strong> <span id="blitzElo">...</span></p>
             </div>
         </div>
     </section>
@@ -250,5 +250,21 @@
             observer.observe(chessBoard);
         });
     </script>
+    <script>
+        async function fetchElos() {
+          try {
+            const response = await fetch('/api/get_fide_ratings');
+            const data = await response.json();
+            document.getElementById('standardElo').innerText = data.standard;
+            document.getElementById('rapidElo').innerText = data.rapid;
+            document.getElementById('blitzElo').innerText = data.blitz;
+          } catch (error) {
+            console.error('Erreur lors de la récupération des Élos:', error);
+          }
+        }
+      
+        document.addEventListener('DOMContentLoaded', fetchElos);
+      </script>
+      
 </body>
 </html>

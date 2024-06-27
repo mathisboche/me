@@ -1,23 +1,9 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static"
-    }
+    { "src": "api/*.js", "use": "@vercel/node" }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "api/index.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/public/$1"
-    }
+    { "src": "/api/get_fide_ratings", "dest": "/api/get_fide_ratings.js" }
   ]
 }
