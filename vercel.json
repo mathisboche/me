@@ -1,9 +1,11 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/*.js", "use": "@vercel/node" }
+    { "src": "api/*.js", "use": "@vercel/node" },
+    { "src": "public/index.html", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/api/get_fide_ratings", "dest": "/api/get_fide_ratings.js" }
+    { "src": "/api/get_fide_ratings", "dest": "/api/get_fide_ratings.js" },
+    { "src": "/(.*)", "dest": "/public/$1" }
   ]
 }

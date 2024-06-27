@@ -1,5 +1,5 @@
 {
-    "name": "me",
+    "name": "my-website",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
@@ -7,4 +7,5 @@
       "axios": "^0.21.1",
       "cheerio": "^1.0.0-rc.5"
     }
-  }  
+  }
+  
