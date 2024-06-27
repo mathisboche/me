@@ -168,14 +168,14 @@ body.darken-background::before {
 /* Styles pour la section Passions */
 #passions {
     padding: 50px 20px;
-    background-color: #2a2a2a;
     transition: background-color 0.5s ease;
+    text-align: center; /* Centrer le contenu */
 }
 
 #passions .section-title {
     font-size: 2em;
     margin-top: 60px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     text-align: center;
     color: #ffffff;
 }
@@ -197,6 +197,25 @@ body.darken-background::before {
     margin-bottom: 20px;
     text-align: center;
     color: #ffffff;
+}
+
+#echecs h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: left; /* Aligner le titre à gauche */
+    color: #ffffff;
+    max-width: 500px; /* Largeur maximale pour correspondre au paragraphe */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro-paragraph {
+    font-size: 1.2em;
+    margin-bottom: 30px; /* Espace entre le paragraphe et l'élément suivant */
+    max-width: 500px; /* Largeur maximale pour une meilleure lisibilité */
+    text-align: left; /* Aligner le texte à gauche */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .chess-controls {
@@ -264,8 +283,6 @@ input#selectBlack:checked + label[for="selectBlack"] {
     color: #ffffff;
 }
 
-
-
 .chess-board {
     margin: 0 auto;
     max-width: 400px;
@@ -274,6 +291,7 @@ input#selectBlack:checked + label[for="selectBlack"] {
 
 .chess-summary {
     text-align: center;
+    margin-bottom: 60px; /* Espace en dessous du résumé */
 }
 
 #openingName {
@@ -286,4 +304,49 @@ input#selectBlack:checked + label[for="selectBlack"] {
 
 .hidden {
     visibility: hidden; /* Garde l'espace sans afficher le contenu */
+}
+
+.elo-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.elo-ratings {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espace entre les cartes */
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+}
+
+.elo-card {
+    background-color: #333;
+    color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.elo-card p {
+    margin: 5px 0;
+    font-size: 1.2em;
+}
+
+.elo-card strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.elo-card .emoji {
+    font-size: 2em;
+    margin-bottom: 10px;
 }

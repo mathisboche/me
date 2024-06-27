@@ -74,6 +74,7 @@
         <h2 class="section-title">Mes Passions</h2>
         <div class="passion" id="echecs">
             <h3>Échecs</h3>
+            <p class="intro-paragraph">J'ai commencé les échecs dans un petit club en Normandie et participé deux fois aux championnats de France jeunes.</p>
             <div class="chess-controls">
                 <h4>Mon ouverture avec les</h4>
                 <div class="toggle-switch">
@@ -87,10 +88,25 @@
             <div id="chessboard" class="chess-board"></div>
             <div class="chess-summary">
                 <p id="openingName" class="hidden">&nbsp;</p> <!-- Utilisation de l'espace insécable pour réserver l'espace -->
-                <p><strong>Standard :</strong> <span id="standardElo">...</span></p>
-                <p><strong>Rapide :</strong> <span id="rapidElo">...</span></p>
-                <p><strong>Blitz :</strong> <span id="blitzElo">...</span></p>
             </div>
+            <div class="elo-ratings">
+                <p class="elo-title">Mes Élos :</p>
+                <div class="elo-card">
+                    <div class="emoji">🐢</div>
+                    <p><strong>Standard</strong></p>
+                    <p><span id="standardElo">...</span></p>
+                </div>
+                <div class="elo-card">
+                    <div class="emoji">🐇</div>
+                    <p><strong>Rapide</strong></p>
+                    <p><span id="rapidElo">...</span></p>
+                </div>
+                <div class="elo-card">
+                    <div class="emoji">🔥</div>
+                    <p><strong>Blitz</strong></p>
+                    <p><span id="blitzElo">...</span></p>
+                </div>
+            </div>  
         </div>
     </section>
     
@@ -255,9 +271,9 @@
           try {
             const response = await fetch('/api/get_fide_ratings');
             const data = await response.json();
-            document.getElementById('standardElo').innerText = data.standard;
-            document.getElementById('rapidElo').innerText = data.rapid;
-            document.getElementById('blitzElo').innerText = data.blitz;
+            document.getElementById('standardElo').innerText = `${data.standard} F`;
+            document.getElementById('rapidElo').innerText = `${data.rapid} F`;
+            document.getElementById('blitzElo').innerText = `${data.blitz} F`;
           } catch (error) {
             console.error('Erreur lors de la récupération des Élos:', error);
           }
