@@ -181,7 +181,7 @@ body.darken-background::before {
 }
 
 .passion {
-    background: #333;
+    background: #2a2a2a;
     color: #e0e0e0;
     padding: 20px;
     border-radius: 8px;
@@ -189,7 +189,6 @@ body.darken-background::before {
     width: 100%;
     max-width: 800px;
     margin: 0 auto 40px auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .passion h3 {
@@ -306,12 +305,19 @@ input#selectBlack:checked + label[for="selectBlack"] {
     visibility: hidden; /* Garde l'espace sans afficher le contenu */
 }
 
+.elo-title-container {
+    max-width: 500px; /* Largeur maximale pour correspondre au paragraphe */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* Aligner le texte à gauche */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 .elo-title {
     font-size: 1.5em;
     font-weight: bold;
     color: #ffffff;
-    margin-top: 20px;
-    margin-bottom: 10px;
 }
 
 .elo-ratings {
@@ -319,20 +325,38 @@ input#selectBlack:checked + label[for="selectBlack"] {
     justify-content: center;
     gap: 20px; /* Espace entre les cartes */
     flex-wrap: wrap;
-    margin-bottom: 0px;
 }
 
 .elo-card {
-    background-color: #333;
+    background: #333;
     color: #e0e0e0;
     padding: 20px;
     border-radius: 8px;
+    margin: 20px 0;
     width: 150px;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.elo-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.elo-card:hover {
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1); /* Plus dispersé et plus flou */
+    filter: brightness(1.2);
+    z-index: 10; /* Ensure it appears above the overlay */
+}
+
+.elo-card .emoji {
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 
 .elo-card p {
@@ -346,7 +370,32 @@ input#selectBlack:checked + label[for="selectBlack"] {
     font-size: 1.2em;
 }
 
-.elo-card .emoji {
-    font-size: 2em;
-    margin-bottom: 10px;
+.fide-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #000; /* Couleur de fond similaire aux autres éléments */
+    color: #e0e0e0; /* Couleur du texte similaire aux autres éléments */
+    text-decoration: none;
+    border-radius: 15px; /* Coin arrondi pour correspondre aux cartes */
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.fide-link:hover {
+    background-color: #000; /* Légèrement plus clair pour l'effet de survol */
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1); /* Effet de survol similaire aux cartes */
+    filter: brightness(1.2); /* Effet de luminosité au survol */
+    z-index: 10; /* Ensure it appears above other content */
+}
+
+.toggle-switch .slider {
+    position: absolute;
+    top: 5px; /* Ajuster pour s'adapter aux nouvelles marges */
+    left: 5px;
+    width: calc(50% - 7px); /* Ajustement pour les marges des deux côtés */
+    height: calc(100% - 10px); /* Pour occuper toute la hauteur du toggle */
+    background-color: #000;
+    border-radius: calc(20px - 5px); /* Ajuster le border-radius pour correspondre à la hauteur */
+    transition: left 0.3s ease, width 0.3s ease;
 }

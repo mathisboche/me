@@ -89,8 +89,10 @@
             <div class="chess-summary">
                 <p id="openingName" class="hidden">&nbsp;</p> <!-- Utilisation de l'espace insécable pour réserver l'espace -->
             </div>
-            <div class="elo-ratings">
+            <div class="elo-title-container">
                 <p class="elo-title">Mes Élos :</p>
+            </div>
+            <div class="elo-ratings">
                 <div class="elo-card">
                     <div class="emoji">🐢</div>
                     <p><strong>Standard</strong></p>
@@ -106,7 +108,8 @@
                     <p><strong>Blitz</strong></p>
                     <p><span id="blitzElo">...</span></p>
                 </div>
-            </div>  
+            </div>
+            <a href="https://ratings.fide.com/profile/651010240" target="_blank" class="fide-link">Voir ma fiche FIDE</a>  
         </div>
     </section>
     
@@ -123,9 +126,11 @@
                 luminescence.style.top = e.clientY + "px";
             });
 
-            // Timeline visibility effect
-            const items = document.querySelectorAll(".timeline-item");
+            // Récupérer tous les éléments de la timeline et les cartes d'élo
+            const timelineItems = document.querySelectorAll(".timeline-item");
+            const eloCards = document.querySelectorAll(".elo-card");
 
+            // Fonction pour vérifier si un élément est dans le viewport
             const isInViewport = (elem) => {
                 const bounding = elem.getBoundingClientRect();
                 return (
@@ -136,19 +141,31 @@
                 );
             };
 
+            // Fonction pour ajouter la classe is-visible si l'élément est dans le viewport
             const run = () => {
-                items.forEach((item) => {
+                timelineItems.forEach((item) => {
                     if (isInViewport(item)) {
                         item.classList.add("is-visible");
                     }
                 });
+
+                eloCards.forEach((card) => {
+                    if (isInViewport(card)) {
+                        card.classList.add("is-visible");
+                    }
+                });
             };
 
+            // Ajouter des événements pour vérifier le viewport au chargement, redimensionnement et défilement
+            window.addEventListener("load", run);
+            window.addEventListener("resize", run);
+            window.addEventListener("scroll", run);
+
             // Darken background and other timeline items on hover
-            items.forEach(item => {
+            timelineItems.forEach(item => {
                 item.addEventListener("mouseenter", () => {
                     document.body.classList.add("darken-background");
-                    items.forEach(i => {
+                    timelineItems.forEach(i => {
                         if (i !== item) {
                             i.classList.add("darken");
                         }
@@ -156,16 +173,11 @@
                 });
                 item.addEventListener("mouseleave", () => {
                     document.body.classList.remove("darken-background");
-                    items.forEach(i => {
+                    timelineItems.forEach(i => {
                         i.classList.remove("darken");
                     });
                 });
-            });
-
-            // Events
-            window.addEventListener("load", run);
-            window.addEventListener("resize", run);
-            window.addEventListener("scroll", run);
+    });
 
             // JavaScript pour le plateau d'échecs interactif
             var chessBoard = document.getElementById('chessboard');
