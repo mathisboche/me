@@ -68,6 +68,8 @@ html {
     cursor: pointer;
     text-decoration: none; /* Remove underline from the link */
     color: inherit; /* Inherit color from parent element */
+    display: block; /* Ensure it's a block element */
+    text-align: center; /* Center the text/symbol */
 }
 
 /* Keyframes for bounce animation */
@@ -88,8 +90,9 @@ html {
     .scroll-indicator {
         position: static; /* Position within the normal flow */
         margin-top: 20px; /* Add space above the scroll indicator */
+        margin-bottom: 20px; /* Add space below the scroll indicator */
     }
-    
+
     .header-content {
         flex-direction: column; /* Stack elements vertically */
         text-align: center; /* Center text on mobile */
@@ -116,24 +119,21 @@ html {
     }
 }
 
-@media (min-width: 601px) {
-    .mobile-p {
-        display: none; /* Hide mobile version on desktop */
-    }
-
-    .desktop-p {
-        display: block; /* Show desktop version on desktop */
-    }
-}
-
-
 /* Media query for desktop devices */
 @media (min-width: 601px) {
     .scroll-indicator {
         position: absolute;
-        bottom: 50px; /* Position at the bottom of the section */
+        bottom: 50px;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    .mobile-p {
+        display: none;
+    }
+
+    .desktop-p {
+        display: block;
     }
 }
 
