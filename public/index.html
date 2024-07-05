@@ -123,12 +123,30 @@
         import { Chess } from 'https://cdn.jsdelivr.net/npm/chess.js@0.13.1/chess.js';
 
         document.addEventListener("DOMContentLoaded", function() {
-            // Luminescence effect
-            document.addEventListener("mousemove", function(e) {
-                const luminescence = document.getElementById("luminescence");
-                luminescence.style.left = e.clientX + "px";
-                luminescence.style.top = e.clientY + "px";
-            });
+            const luminescence = document.getElementById("luminescence");
+    
+            // Fonction pour vérifier si l'appareil est mobile
+            function isMobileDevice() {
+                return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+            }
+            
+            // Fonction pour gérer l'effet de luminescence
+            function handleLuminescence(e) {
+                if (!isMobileDevice()) {
+                    luminescence.style.left = e.clientX + "px";
+                    luminescence.style.top = e.clientY + "px";
+                    luminescence.style.display = "block";
+                } else {
+                    luminescence.style.display = "none";
+                }
+            }
+            
+            // Ajouter l'écouteur d'événement uniquement si ce n'est pas un appareil mobile
+            if (!isMobileDevice()) {
+                document.addEventListener("mousemove", handleLuminescence);
+            } else {
+                luminescence.style.display = "none";
+            }
 
             // Récupérer tous les éléments de la timeline et les cartes d'élo
             const timelineItems = document.querySelectorAll(".timeline-item");
@@ -181,7 +199,7 @@
                         i.classList.remove("darken");
                     });
                 });
-    });
+            });
 
             // JavaScript pour le plateau d'échecs interactif
             var chessBoard = document.getElementById('chessboard');
