@@ -63,9 +63,6 @@ html {
 }
 
 .scroll-indicator {
-    position: absolute;
-    bottom: 50px; /* Position at the bottom of the section */
-    left: 50%;
     font-size: 2em;
     animation: bounce 2s infinite;
     cursor: pointer;
@@ -88,6 +85,11 @@ html {
 
 /* Media query for mobile devices */
 @media (max-width: 600px) {
+    .scroll-indicator {
+        position: static; /* Position within the normal flow */
+        margin-top: 20px; /* Add space above the scroll indicator */
+    }
+    
     .header-content {
         flex-direction: column; /* Stack elements vertically */
         text-align: center; /* Center text on mobile */
@@ -121,6 +123,17 @@ html {
 
     .desktop-p {
         display: block; /* Show desktop version on desktop */
+    }
+}
+
+
+/* Media query for desktop devices */
+@media (min-width: 601px) {
+    .scroll-indicator {
+        position: absolute;
+        bottom: 50px; /* Position at the bottom of the section */
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
