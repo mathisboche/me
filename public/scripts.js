@@ -31,38 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Récupérer tous les éléments de la timeline et les cartes d'élo
     const eloCards = document.querySelectorAll(".elo-card");
 
-    // Modifier la fonction isInViewport
-    const isInViewport = (elem) => {
-        const rect = elem.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        return (
-            rect.top <= windowHeight * 0.9 && // Déclencher l'animation quand l'élément est à 90% de la hauteur de la fenêtre
-            rect.bottom >= 0
-        );
-    };
-
-    // Fonction pour mettre à jour l'état de focus des éléments de la timeline
-    const updateFocus = () => {
-        if (isMobile) {
-            timelineItems.forEach((item) => {
-                if (isInViewport(item)) {
-                    item.classList.add("in-focus");
-                } else {
-                    item.classList.remove("in-focus");
-                }
-            });
-        }
-    };
-
-    // Modifier la fonction handleAppearance pour qu'elle s'exécute plus fréquemment
-    const handleAppearance = () => {
-        timelineItems.forEach((item) => {
-            if (isInViewport(item)) {
-                item.classList.add("is-visible");
-            }
-        });
-    };
-
     // Fonction pour trouver l'élément le plus centré dans la vue
     function findMostCenteredElement(elements) {
         const viewportHeight = window.innerHeight;
@@ -91,12 +59,18 @@ document.addEventListener("DOMContentLoaded", function() {
         timelineItems.forEach(item => {
             if (item === mostCenteredElement) {
                 item.classList.add("in-focus");
-                item.querySelector(".emoji").style.opacity = "1";
-                item.querySelector(".emoji").style.transform = "translateY(0)";
+                const emoji = item.querySelector(".emoji");
+                if (emoji) {
+                    emoji.style.opacity = "1";
+                    emoji.style.transform = "translateY(0)";
+                }
             } else {
                 item.classList.remove("in-focus");
-                item.querySelector(".emoji").style.opacity = "0";
-                item.querySelector(".emoji").style.transform = "translateY(10px)";
+                const emoji = item.querySelector(".emoji");
+                if (emoji) {
+                    emoji.style.opacity = "0";
+                    emoji.style.transform = "translateY(10px)";
+                }
             }
         });
 
@@ -118,29 +92,27 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    // Fonction pour gérer l'apparition des éléments
+    const handleAppearance = () => {
+        timelineItems.forEach((item) => {
+            const rect = item.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            if (rect.top <= windowHeight * 0.9) {
+                item.classList.add("is-visible");
+            }
+        });
+        updateFocus();
+    };
+
     // Écouteur d'événements pour le défilement avec throttle
     let scrollThrottle;
     window.addEventListener("scroll", () => {
         if (!scrollThrottle) {
             scrollThrottle = setTimeout(() => {
-                updateFocus();
+                handleAppearance();
                 scrollThrottle = null;
             }, 100); // Exécuter toutes les 100ms maximum
         }
-    });
-
-    // Appel initial pour gérer l'état initial
-    updateFocus();
-
-    // Supprimez les écouteurs d'événements mouseenter et mouseleave existants
-    timelineItems.forEach(item => {
-        item.removeEventListener("mouseenter", () => {});
-        item.removeEventListener("mouseleave", () => {});
-    });
-
-    // Écouteur d'événements pour le défilement
-    window.addEventListener("scroll", () => {
-        handleAppearance();
     });
     
     // Appel initial pour gérer l'état initial
@@ -148,14 +120,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Fonction pour ajouter la classe is-visible si l'élément est dans le viewport
     const run = () => {
-        timelineItems.forEach((item) => {
-            if (isInViewport(item)) {
-                item.classList.add("is-visible");
-            }
-        });
-
         eloCards.forEach((card) => {
-            if (isInViewport(card)) {
+            const rect = card.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            if (rect.top <= windowHeight * 0.9) {
                 card.classList.add("is-visible");
             }
         });
@@ -169,35 +137,16 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("scroll", function() {
         if (!ticking) {
             window.requestAnimationFrame(function() {
-                handleAppearance();
+                run();
                 ticking = false;
             });
             ticking = true;
         }
     });
 
-    // Ajouter des événements pour vérifier le viewport au chargement, redimensionnement et défilement
-    window.addEventListener("load", handleAppearance);
-    window.addEventListener("resize", handleAppearance);
-    window.addEventListener("scroll", handleAppearance);
-
-    // Darken background and other timeline items on hover
-    timelineItems.forEach(item => {
-        item.addEventListener("mouseenter", () => {
-            document.body.classList.add("darken-background");
-            timelineItems.forEach(i => {
-                if (i !== item) {
-                    i.classList.add("darken");
-                }
-            });
-        });
-        item.addEventListener("mouseleave", () => {
-            document.body.classList.remove("darken-background");
-            timelineItems.forEach(i => {
-                i.classList.remove("darken");
-            });
-        });
-    });
+    // Ajouter des événements pour vérifier le viewport au chargement et redimensionnement
+    window.addEventListener("load", run);
+    window.addEventListener("resize", run);
 
     // JavaScript pour le plateau d'échecs interactif
     var chessBoard = document.getElementById('chessboard');
