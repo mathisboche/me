@@ -61,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.classList.add("is-visible");
             }
         });
-        updateFocus();
     };
 
     // Fonction pour trouver l'élément le plus centré dans la vue
@@ -170,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("scroll", function() {
         if (!ticking) {
             window.requestAnimationFrame(function() {
-                run();
+                handleAppearance();
                 ticking = false;
             });
             ticking = true;
@@ -178,9 +177,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Ajouter des événements pour vérifier le viewport au chargement, redimensionnement et défilement
-    window.addEventListener("load", run);
-    window.addEventListener("resize", run);
-    window.addEventListener("scroll", run);
+    window.addEventListener("load", handleAppearance);
+    window.addEventListener("resize", handleAppearance);
+    window.addEventListener("scroll", handleAppearance);
 
     // Darken background and other timeline items on hover
     timelineItems.forEach(item => {
