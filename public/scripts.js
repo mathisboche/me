@@ -1,6 +1,8 @@
 import { Chess } from 'https://cdn.jsdelivr.net/npm/chess.js@0.13.1/chess.js';
 
 document.addEventListener("DOMContentLoaded", function() {
+    const timelineItems = document.querySelectorAll(".timeline-item");
+    const isMobile = window.innerWidth <= 768;
     const luminescence = document.getElementById("luminescence");
 
     // Fonction pour vérifier si l'appareil est mobile
@@ -27,23 +29,48 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Récupérer tous les éléments de la timeline et les cartes d'élo
-    const timelineItems = document.querySelectorAll(".timeline-item");
     const eloCards = document.querySelectorAll(".elo-card");
 
-    // Fonction modifiée pour vérifier si un élément est dans le viewport
+    // Fonction pour vérifier si un élément est dans le viewport
     const isInViewport = (elem) => {
         const rect = elem.getBoundingClientRect();
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-
-        // Considérez l'élément comme visible s'il est partiellement dans le viewport
         return (
-            rect.top <= windowHeight &&
-            rect.left <= windowWidth &&
-            rect.bottom >= 0 &&
-            rect.right >= 0
+            rect.top <= windowHeight / 2 &&
+            rect.bottom >= windowHeight / 2
         );
     };
+
+    // Fonction pour mettre à jour l'état de focus des éléments de la timeline
+    const updateFocus = () => {
+        if (isMobile) {
+            timelineItems.forEach((item) => {
+                if (isInViewport(item)) {
+                    item.classList.add("in-focus");
+                } else {
+                    item.classList.remove("in-focus");
+                }
+            });
+        }
+    };
+
+    // Fonction pour gérer l'apparition des éléments
+    const handleAppearance = () => {
+        timelineItems.forEach((item) => {
+            if (isInViewport(item)) {
+                item.classList.add("is-visible");
+            }
+        });
+        updateFocus();
+    };
+
+    // Écouteur d'événements pour le défilement
+    window.addEventListener("scroll", () => {
+        handleAppearance();
+    });
+    
+    // Appel initial pour gérer l'état initial
+    handleAppearance();
 
     // Fonction pour ajouter la classe is-visible si l'élément est dans le viewport
     const run = () => {

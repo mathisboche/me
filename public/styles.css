@@ -190,7 +190,7 @@ html {
     position: relative;
     opacity: 0;
     transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, filter 0.3s ease;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, filter 0.3s ease, background-color 0.3s ease;
 }
 
 .timeline-item::before {
@@ -228,6 +228,20 @@ html {
     transform: translateY(10px);
 }
 
+/* Effet de glow pour desktop */
+@media (min-width: 769px) {
+    .timeline-item:hover {
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+        filter: brightness(1.2);
+        z-index: 10;
+    }
+
+    .timeline-item:hover .emoji {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Styles pour les appareils mobiles */
 @media (max-width: 768px) {
     .timeline {
@@ -252,6 +266,22 @@ html {
 
     .timeline-item p {
         font-size: 0.9em;
+    }
+
+    .timeline-item.in-focus {
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+        filter: brightness(1.2);
+        z-index: 10;
+        background-color: #444; /* Légèrement plus clair pour l'effet de focus */
+    }
+
+    .timeline-item.in-focus .emoji {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .timeline-item:not(.in-focus) {
+        filter: brightness(0.8);
     }
 }
 
