@@ -64,16 +64,80 @@ document.addEventListener("DOMContentLoaded", function() {
         updateFocus();
     };
 
-    // Ajouter un écouteur d'événements pour le défilement avec throttle
+    // Fonction pour trouver l'élément le plus centré dans la vue
+    function findMostCenteredElement(elements) {
+        const viewportHeight = window.innerHeight;
+        let mostCentered = null;
+        let smallestDistance = Infinity;
+
+        elements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const elementCenter = rect.top + rect.height / 2;
+            const viewportCenter = viewportHeight / 2;
+            const distance = Math.abs(elementCenter - viewportCenter);
+
+            if (distance < smallestDistance) {
+                smallestDistance = distance;
+                mostCentered = element;
+            }
+        });
+
+        return mostCentered;
+    }
+
+    // Fonction pour mettre à jour l'état de focus des éléments de la timeline
+    function updateFocus() {
+        const mostCenteredElement = findMostCenteredElement(timelineItems);
+
+        timelineItems.forEach(item => {
+            if (item === mostCenteredElement) {
+                item.classList.add("in-focus");
+                item.querySelector(".emoji").style.opacity = "1";
+                item.querySelector(".emoji").style.transform = "translateY(0)";
+            } else {
+                item.classList.remove("in-focus");
+                item.querySelector(".emoji").style.opacity = "0";
+                item.querySelector(".emoji").style.transform = "translateY(10px)";
+            }
+        });
+
+        // Mise à jour de l'effet de glow
+        if (mostCenteredElement) {
+            document.body.classList.add("darken-background");
+            timelineItems.forEach(item => {
+                if (item !== mostCenteredElement) {
+                    item.classList.add("darken");
+                } else {
+                    item.classList.remove("darken");
+                }
+            });
+        } else {
+            document.body.classList.remove("darken-background");
+            timelineItems.forEach(item => {
+                item.classList.remove("darken");
+            });
+        }
+    }
+
+    // Écouteur d'événements pour le défilement avec throttle
     let scrollThrottle;
     window.addEventListener("scroll", () => {
         if (!scrollThrottle) {
             scrollThrottle = setTimeout(() => {
-                handleAppearance();
+                updateFocus();
                 scrollThrottle = null;
             }, 100); // Exécuter toutes les 100ms maximum
         }
-    })
+    });
+
+    // Appel initial pour gérer l'état initial
+    updateFocus();
+
+    // Supprimez les écouteurs d'événements mouseenter et mouseleave existants
+    timelineItems.forEach(item => {
+        item.removeEventListener("mouseenter", () => {});
+        item.removeEventListener("mouseleave", () => {});
+    });
 
     // Écouteur d'événements pour le défilement
     window.addEventListener("scroll", () => {
