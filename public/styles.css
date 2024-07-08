@@ -173,11 +173,11 @@ html {
 .timeline {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Changé de center à flex-start */
     position: relative;
     max-width: 600px;
     margin: 0 auto;
-    padding: 0 20px; /* Ajout de padding pour éviter que le contenu ne touche les bords sur mobile */
+    padding: 0 20px 0 80px; /* Ajout de padding-left pour laisser de l'espace pour l'année */
 }
 
 .timeline-item {
@@ -186,7 +186,7 @@ html {
     padding: 15px;
     border-radius: 8px;
     margin: 20px 0;
-    width: 100%;
+    width: calc(100% - 60px); /* Ajusté pour laisser de l'espace pour l'année */
     position: relative;
     opacity: 0;
     transform: translateY(50px);
@@ -196,12 +196,14 @@ html {
 .timeline-item::before {
     content: attr(data-year);
     position: absolute;
-    top: 10px;
-    left: -60px;
+    top: 50%;
+    left: -70px; /* Ajusté pour positionner l'année à gauche de l'élément */
+    transform: translateY(-50%);
     background: #444;
     color: #e0e0e0;
     padding: 5px 10px;
     border-radius: 4px;
+    font-size: 0.9em;
 }
 
 .timeline-item.is-visible {
@@ -229,17 +231,18 @@ html {
 /* Styles pour les appareils mobiles */
 @media (max-width: 768px) {
     .timeline {
-        max-width: 100%;
+        padding: 0 10px 0 60px; /* Ajusté pour les appareils mobiles */
     }
 
     .timeline-item {
         padding: 12px;
         margin: 15px 0;
+        width: calc(100% - 40px); /* Ajusté pour les appareils mobiles */
     }
 
     .timeline-item::before {
-        left: -40px;
-        font-size: 0.9em;
+        left: -50px; /* Ajusté pour les appareils mobiles */
+        font-size: 0.8em;
         padding: 3px 8px;
     }
 
@@ -255,17 +258,18 @@ html {
 /* Styles pour les très petits écrans */
 @media (max-width: 480px) {
     .timeline {
-        padding: 0 10px;
+        padding: 0 5px 0 50px; /* Ajusté pour les très petits écrans */
     }
 
     .timeline-item {
         padding: 10px;
         margin: 12px 0;
+        width: calc(100% - 30px); /* Ajusté pour les très petits écrans */
     }
 
     .timeline-item::before {
-        left: -30px;
-        font-size: 0.8em;
+        left: -45px; /* Ajusté pour les très petits écrans */
+        font-size: 0.7em;
         padding: 2px 6px;
     }
 
