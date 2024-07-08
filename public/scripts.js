@@ -30,14 +30,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const timelineItems = document.querySelectorAll(".timeline-item");
     const eloCards = document.querySelectorAll(".elo-card");
 
-    // Fonction pour vérifier si un élément est dans le viewport
+    // Fonction modifiée pour vérifier si un élément est dans le viewport
     const isInViewport = (elem) => {
-        const bounding = elem.getBoundingClientRect();
+        const rect = elem.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+        // Considérez l'élément comme visible s'il est partiellement dans le viewport
         return (
-            bounding.top >= 0 &&
-            bounding.left >= 0 &&
-            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+            rect.top <= windowHeight &&
+            rect.left <= windowWidth &&
+            rect.bottom >= 0 &&
+            rect.right >= 0
         );
     };
 
@@ -55,6 +59,21 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     };
+
+    // Exécutez la fonction run immédiatement après le chargement de la page
+    run();
+
+    // Utilisez un throttle pour limiter la fréquence d'exécution de la fonction run lors du défilement
+    let ticking = false;
+    window.addEventListener("scroll", function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                run();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
 
     // Ajouter des événements pour vérifier le viewport au chargement, redimensionnement et défilement
     window.addEventListener("load", run);
