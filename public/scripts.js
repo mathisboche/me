@@ -31,13 +31,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Récupérer tous les éléments de la timeline et les cartes d'élo
     const eloCards = document.querySelectorAll(".elo-card");
 
-    // Fonction pour vérifier si un élément est dans le viewport
+    // Modifier la fonction isInViewport
     const isInViewport = (elem) => {
         const rect = elem.getBoundingClientRect();
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
         return (
-            rect.top <= windowHeight / 2 &&
-            rect.bottom >= windowHeight / 2
+            rect.top <= windowHeight * 0.9 && // Déclencher l'animation quand l'élément est à 90% de la hauteur de la fenêtre
+            rect.bottom >= 0
         );
     };
 
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    // Fonction pour gérer l'apparition des éléments
+    // Modifier la fonction handleAppearance pour qu'elle s'exécute plus fréquemment
     const handleAppearance = () => {
         timelineItems.forEach((item) => {
             if (isInViewport(item)) {
@@ -63,6 +63,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         updateFocus();
     };
+
+    // Ajouter un écouteur d'événements pour le défilement avec throttle
+    let scrollThrottle;
+    window.addEventListener("scroll", () => {
+        if (!scrollThrottle) {
+            scrollThrottle = setTimeout(() => {
+                handleAppearance();
+                scrollThrottle = null;
+            }, 100); // Exécuter toutes les 100ms maximum
+        }
+    })
 
     // Écouteur d'événements pour le défilement
     window.addEventListener("scroll", () => {
