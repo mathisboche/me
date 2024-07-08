@@ -169,6 +169,7 @@ html {
     color: #ffffff;
 }
 
+/* Styles de base pour la timeline */
 .timeline {
     display: flex;
     flex-direction: column;
@@ -176,12 +177,13 @@ html {
     position: relative;
     max-width: 600px;
     margin: 0 auto;
+    padding: 0 20px; /* Ajout de padding pour éviter que le contenu ne touche les bords sur mobile */
 }
 
 .timeline-item {
     background: #333;
     color: #e0e0e0;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
     margin: 20px 0;
     width: 100%;
@@ -208,9 +210,9 @@ html {
 }
 
 .timeline-item:hover {
-    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1); /* Plus dispersé et plus flou */
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
     filter: brightness(1.2);
-    z-index: 10; /* Ensure it appears above the overlay */
+    z-index: 10;
 }
 
 .timeline-item:hover .emoji {
@@ -224,7 +226,59 @@ html {
     transform: translateY(10px);
 }
 
-/* Overlay to darken the rest of the page */
+/* Styles pour les appareils mobiles */
+@media (max-width: 768px) {
+    .timeline {
+        max-width: 100%;
+    }
+
+    .timeline-item {
+        padding: 12px;
+        margin: 15px 0;
+    }
+
+    .timeline-item::before {
+        left: -40px;
+        font-size: 0.9em;
+        padding: 3px 8px;
+    }
+
+    .timeline-item h3 {
+        font-size: 1.1em;
+    }
+
+    .timeline-item p {
+        font-size: 0.9em;
+    }
+}
+
+/* Styles pour les très petits écrans */
+@media (max-width: 480px) {
+    .timeline {
+        padding: 0 10px;
+    }
+
+    .timeline-item {
+        padding: 10px;
+        margin: 12px 0;
+    }
+
+    .timeline-item::before {
+        left: -30px;
+        font-size: 0.8em;
+        padding: 2px 6px;
+    }
+
+    .timeline-item h3 {
+        font-size: 1em;
+    }
+
+    .timeline-item p {
+        font-size: 0.85em;
+    }
+}
+
+/* Overlay pour assombrir le reste de la page */
 body::before {
     content: "";
     position: fixed;
@@ -234,14 +288,14 @@ body::before {
     height: 100%;
     background: rgba(0, 0, 0, 0);
     transition: background 0.3s ease;
-    pointer-events: none; /* Ensure it doesn't interfere with mouse events */
+    pointer-events: none;
 }
 
 body.darken-background::before {
-    background: rgba(0, 0, 0, 0.2); /* Adjust the opacity as needed */
+    background: rgba(0, 0, 0, 0.2);
 }
 
-/* Darken other timeline items */
+/* Assombrir les autres éléments de la timeline */
 .timeline-item.darken {
     filter: brightness(0.8);
     transition: filter 0.3s ease;
