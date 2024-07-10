@@ -36,54 +36,58 @@
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
-  }
-  
-  /* Reset et styles de base */
-  * {
+}
+
+/* Reset et styles de base */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
     font-family: var(--font-primary);
     font-size: var(--font-size-base);
     line-height: var(--line-height-base);
     color: var(--color-text);
     background-color: var(--color-background);
-  }
-  
-  /* Typographie */
-  h1, h2, h3, h4, h5, h6 {
+}
+
+/* Typographie */
+h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-secondary);
     font-weight: var(--font-weight-bold);
     margin-bottom: var(--spacing-md);
-  }
-  
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
-  h3 { font-size: 1.75rem; }
-  h4 { font-size: 1.5rem; }
-  h5 { font-size: 1.25rem; }
-  h6 { font-size: 1rem; }
-  
-  p {
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
     margin-bottom: var(--spacing-md);
-  }
-  
-  /* Liens */
-  a {
+}
+
+/* Liens */
+a {
     color: var(--color-accent);
     text-decoration: none;
     transition: color var(--transition-fast);
-  }
-  
-  a:hover {
+}
+
+a:hover {
     color: var(--color-text);
-  }
-  
-  /* Boutons */
-  .btn {
+}
+
+/* Boutons */
+.btn {
     display: inline-block;
     padding: var(--spacing-sm) var(--spacing-md);
     background-color: var(--color-accent);
@@ -94,23 +98,23 @@
     text-align: center;
     cursor: pointer;
     transition: background-color var(--transition-fast);
-  }
-  
-  .btn:hover {
+}
+
+.btn:hover {
     background-color: var(--color-hover);
-  }
-  
-  /* Cartes */
-  .card {
+}
+
+/* Cartes */
+.card {
     background-color: var(--color-card);
     border-radius: var(--border-radius-md);
     padding: var(--spacing-md);
     margin-bottom: var(--spacing-md);
     box-shadow: var(--box-shadow);
-  }
-  
-  /* Formulaires */
-  input, textarea, select {
+}
+
+/* Formulaires */
+input, textarea, select {
     width: 100%;
     padding: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
@@ -118,62 +122,48 @@
     border-radius: var(--border-radius-sm);
     background-color: var(--color-secondary);
     color: var(--color-text);
-  }
-  
-  /* Sections */
-  section {
+}
+
+/* Sections */
+section {
     padding: var(--spacing-xl) 0;
-  }
-  
-  /* Conteneur */
-  .container {
+}
+
+/* Conteneur */
+.container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-  }
-  
-  /* Grille */
-  .grid {
-    display: grid;
-    gap: var(--spacing-md);
-  }
-  
-  /* Utilitaires */
-  .text-center { text-align: center; }
-  .text-left { text-align: left; }
-  .text-right { text-align: right; }
-  
-  .mb-sm { margin-bottom: var(--spacing-sm); }
-  .mb-md { margin-bottom: var(--spacing-md); }
-  .mb-lg { margin-bottom: var(--spacing-lg); }
-  
-  .mt-sm { margin-top: var(--spacing-sm); }
-  .mt-md { margin-top: var(--spacing-md); }
-  .mt-lg { margin-top: var(--spacing-lg); }
-  
-  /* Media Queries */
-  @media (max-width: 768px) {
-    :root {
-      --font-size-base: 14px;
-    }
-    
-    .container {
-      width: 95%;
-    }
-  }
-
-html {
-    scroll-behavior: smooth; /* Enable smooth scrolling */
 }
 
+/* Grille */
+.grid {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+/* Utilitaires */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+
+/* Styles spécifiques */
 #main-content {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     text-align: center;
-    padding: 20px 0; /* Add some padding to top and bottom */
-    position: relative; /* To position the scroll indicator */
+    padding: 20px 0;
+    position: relative;
 }
 
 .header-content {
@@ -189,7 +179,7 @@ html {
 
 .text-content {
     text-align: left;
-    max-width: 400px; /* Optional: to limit the width of the text container */
+    max-width: 400px;
 }
 
 .text-content h1 {
@@ -218,60 +208,394 @@ html {
     font-size: 2em;
     animation: bounce 2s infinite;
     cursor: pointer;
-    text-decoration: none; /* Remove underline from the link */
-    color: inherit; /* Inherit color from parent element */
-    display: block; /* Ensure it's a block element */
-    text-align: center; /* Center the text/symbol */
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    text-align: center;
 }
 
-/* Keyframes for bounce animation */
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+#luminescence {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, background 0.3s;
+    filter: blur(75px);
+    z-index: 1000;
+}
+
+#about {
+    padding: 50px 20px;
+    background-color: var(--color-secondary);
+    transition: background-color 0.5s ease;
+}
+
+.section-title {
+    font-size: 2em;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--color-text);
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px 0 80px;
+}
+
+.timeline-item {
+    background: var(--color-card);
+    color: var(--color-text);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    margin: 20px 0;
+    width: calc(100% - 60px);
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, filter 0.3s ease, background-color 0.3s ease;
+}
+
+.timeline-item::before {
+    content: attr(data-year);
+    position: absolute;
+    top: 50%;
+    left: -70px;
+    transform: translateY(-50%);
+    background: var(--color-hover);
+    color: var(--color-text);
+    padding: 5px 10px;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.9em;
+}
+
+.timeline-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:hover {
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+    filter: brightness(1.2);
+    z-index: 10;
+}
+
+.timeline-item .emoji {
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+}
+
+.timeline-item:hover .emoji {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#passions {
+    padding: 50px 20px;
+    transition: background-color 0.5s ease;
+    text-align: center;
+}
+
+.passion {
+    background: var(--color-secondary);
+    color: var(--color-text);
+    padding: 20px;
+    border-radius: var(--border-radius-md);
+    margin: 0 auto 40px auto;
+    width: calc(100% - 40px);
+    max-width: 800px;
+}
+
+#echecs h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: left;
+    color: var(--color-text);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro-paragraph {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    max-width: 500px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chess-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chess-controls h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 200px;
+    height: 40px;
+    background-color: var(--color-hover);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch input[type="radio"] {
+    display: none;
+}
+
+.toggle-switch label {
+    flex: 1;
+    text-align: center;
+    line-height: 34px;
+    font-size: 1.2em;
+    color: var(--color-text);
+    cursor: pointer;
+    z-index: 1;
+    transition: color 0.3s ease;
+    margin: 0;
+}
+
+.toggle-switch .slider {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: calc(50% - 7px);
+    height: calc(100% - 10px);
+    background-color: var(--color-primary);
+    border-radius: calc(20px - 5px);
+    transition: left 0.3s ease, width 0.3s ease;
+}
+
+input#selectWhite:checked ~ .slider {
+    left: 5px;
+}
+
+input#selectBlack:checked ~ .slider {
+    left: calc(50% + 2px);
+}
+
+input#selectWhite:checked + label[for="selectWhite"],
+input#selectBlack:checked + label[for="selectBlack"] {
+    color: var(--color-text);
+}
+
+.chess-board {
+    margin: 40px auto 20px auto;
+    max-width: 400px;
+    width: calc(100% - 60px);
+}
+
+.chess-summary {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+#openingName {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--color-text);
+    min-height: 1.4em;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.elo-title-container {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.elo-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.elo-ratings {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.elo-card {
+    background: var(--color-card);
+    color: var(--color-text);
+    padding: 20px;
+    border-radius: var(--border-radius-md);
+    margin: 20px 0;
+    width: 150px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.elo-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.elo-card:hover {
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+    filter: brightness(1.2);
+    z-index: 10;
+}
+
+.elo-card .emoji {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.elo-card p {
+    margin: 5px 0;
+    font-size: 1.2em;
+}
+
+.elo-card strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.fide-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.fide-link:hover {
+    background-color: var(--color-hover);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+    filter: brightness(1.2);
+    z-index: 10;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    :root {
+        --font-size-base: 14px;
+    }
+    
+    .container {
+        width: 95%;
+    }
+
+    .timeline {
+        padding: 0 10px 0 60px;
+    }
+
+    .timeline-item {
+        padding: 12px;
+        margin: 15px 0;
+        width: calc(100% - 40px);
+    }
+
+    .timeline-item::before {
+        left: -50px;
+        font-size: 0.8em;
+        padding: 3px 8px;
+    }
+
+    .timeline-item h3 {
+        font-size: 1.1em;
+    }
+
+    .timeline-item p {
+        font-size: 0.9em;
+    }
+
+    .timeline-item.in-focus {
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+        filter: brightness(1.2);
+        z-index: 10;
+        background-color: var(--color-hover);
+    }
+
+    .timeline-item.in-focus .emoji {
+        opacity: 1;
         transform: translateY(0);
     }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
-}
 
-/* Media query for mobile devices */
-@media (max-width: 600px) {
+    .timeline-item:not(.in-focus) {
+        filter: brightness(0.8);
+    }
+
     .scroll-indicator {
-        position: static; /* Position within the normal flow */
-        margin-top: 20px; /* Add space above the scroll indicator */
-        margin-bottom: 20px; /* Add space below the scroll indicator */
+        position: static;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     .header-content {
-        flex-direction: column; /* Stack elements vertically */
-        text-align: center; /* Center text on mobile */
+        flex-direction: column;
+        text-align: center;
     }
 
     .image-content {
-        margin-right: 0; /* Remove margin for stacked layout */
-        margin-bottom: 20px; /* Add margin below the image */
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 
     .text-content {
-        text-align: center; /* Center text on mobile */
+        text-align: center;
     }
 
     .desktop-p {
-        display: none; /* Hide desktop version on mobile */
+        display: none;
     }
 
     .mobile-p {
-        display: block; /* Show mobile version on mobile */
-        font-size: 1em; /* Adjust font size for mobile */
-        margin-top: 10px; /* Add margin to separate from the header */
-        text-align: center; /* Center align text */
+        display: block;
+        font-size: 1em;
+        margin-top: 10px;
+        text-align: center;
     }
 }
 
-/* Media query for desktop devices */
 @media (min-width: 601px) {
     .scroll-indicator {
         position: absolute;
@@ -289,168 +613,19 @@ html {
     }
 }
 
-
-/* Effet de luminescence avec la souris */
-#luminescence {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 400px;
-    height: 400px;
-    pointer-events: none;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s, background 0.3s;
-    filter: blur(75px);
-    z-index: 1000; /* Make sure it's on top of other content */
-}
-
-/* Styles pour la chronologie */
-#about {
-    padding: 50px 20px;
-    background-color: #2a2a2a;
-    transition: background-color 0.5s ease;
-}
-
-.section-title {
-    font-size: 2em;
-    margin-top: 60px; /* Augmente l'espace en haut */
-    margin-bottom: 20px; /* Moins d'espace en bas */
-    text-align: center;
-    color: #ffffff;
-}
-
-/* Styles de base pour la timeline */
-.timeline {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Changé de center à flex-start */
-    position: relative;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 20px 0 80px; /* Ajout de padding-left pour laisser de l'espace pour l'année */
-}
-
-.timeline-item {
-    background: #333;
-    color: #e0e0e0;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 20px 0;
-    width: calc(100% - 60px); /* Ajusté pour laisser de l'espace pour l'année */
-    position: relative;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, filter 0.3s ease, background-color 0.3s ease;
-}
-
-.timeline-item::before {
-    content: attr(data-year);
-    position: absolute;
-    top: 50%;
-    left: -70px; /* Ajusté pour positionner l'année à gauche de l'élément */
-    transform: translateY(-50%);
-    background: #444;
-    color: #e0e0e0;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.9em;
-}
-
-.timeline-item.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.timeline-item:hover {
-    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
-    filter: brightness(1.2);
-    z-index: 10;
-}
-
-.timeline-item:hover .emoji {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.timeline-item .emoji {
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    transform: translateY(10px);
-}
-
-/* Effet de glow pour desktop */
-@media (min-width: 769px) {
-    .timeline-item:hover {
-        box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
-        filter: brightness(1.2);
-        z-index: 10;
-    }
-
-    .timeline-item:hover .emoji {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Styles pour les appareils mobiles */
-@media (max-width: 768px) {
-    .timeline {
-        padding: 0 10px 0 60px; /* Ajusté pour les appareils mobiles */
-    }
-
-    .timeline-item {
-        padding: 12px;
-        margin: 15px 0;
-        width: calc(100% - 40px); /* Ajusté pour les appareils mobiles */
-    }
-
-    .timeline-item::before {
-        left: -50px; /* Ajusté pour les appareils mobiles */
-        font-size: 0.8em;
-        padding: 3px 8px;
-    }
-
-    .timeline-item h3 {
-        font-size: 1.1em;
-    }
-
-    .timeline-item p {
-        font-size: 0.9em;
-    }
-
-    .timeline-item.in-focus {
-        box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
-        filter: brightness(1.2);
-        z-index: 10;
-        background-color: #444; /* Légèrement plus clair pour l'effet de focus */
-    }
-
-    .timeline-item.in-focus .emoji {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .timeline-item:not(.in-focus) {
-        filter: brightness(0.8);
-    }
-}
-
-/* Styles pour les très petits écrans */
 @media (max-width: 480px) {
     .timeline {
-        padding: 0 5px 0 50px; /* Ajusté pour les très petits écrans */
+        padding: 0 5px 0 50px;
     }
 
     .timeline-item {
         padding: 10px;
         margin: 12px 0;
-        width: calc(100% - 30px); /* Ajusté pour les très petits écrans */
+        width: calc(100% - 30px);
     }
 
     .timeline-item::before {
-        left: -45px; /* Ajusté pour les très petits écrans */
+        left: -45px;
         font-size: 0.7em;
         padding: 2px 6px;
     }
@@ -485,238 +660,4 @@ body.darken-background::before {
 .timeline-item.darken {
     filter: brightness(0.8);
     transition: filter 0.3s ease;
-}
-
-/* Styles pour la section Passions */
-#passions {
-    padding: 50px 20px;
-    transition: background-color 0.5s ease;
-    text-align: center; /* Centrer le contenu */
-}
-
-#passions .section-title {
-    font-size: 2em;
-    margin-top: 60px;
-    margin-bottom: 40px;
-    text-align: center;
-    color: #ffffff;
-}
-
-.passion {
-    background: #2a2a2a;
-    color: #e0e0e0;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 0 auto 40px auto; /* Center the div and add bottom margin */
-    width: calc(100%-40px);
-    max-width: 800px;
-}
-
-.passion h3 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #ffffff;
-}
-
-#echecs h3 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    text-align: left; /* Aligner le titre à gauche */
-    color: #ffffff;
-    max-width: 500px; /* Largeur maximale pour correspondre au paragraphe */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.intro-paragraph {
-    font-size: 1.2em;
-    margin-bottom: 30px; /* Espace entre le paragraphe et l'élément suivant */
-    max-width: 500px; /* Largeur maximale pour une meilleure lisibilité */
-    text-align: left; /* Aligner le texte à gauche */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.chess-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.chess-controls h4 {
-    margin-bottom: 10px;
-    font-size: 1.2em;
-}
-
-.toggle-switch {
-    position: relative;
-    width: 200px;
-    height: 40px; /* Hauteur du toggle */
-    background-color: #4d4d4d;
-    border-radius: 20px; /* Border radius du toggle */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3px; /* Marges internes */
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.toggle-switch input[type="radio"] {
-    display: none;
-}
-
-.toggle-switch label {
-    flex: 1;
-    text-align: center;
-    line-height: 34px; /* Ajuster la ligne pour centrer verticalement le texte */
-    font-size: 1.2em;
-    color: #fff;
-    cursor: pointer;
-    z-index: 1;
-    transition: color 0.3s ease;
-    margin: 0; /* Assure que le label prend toute la largeur disponible */
-}
-
-.toggle-switch .slider {
-    position: absolute;
-    top: 5px; /* Ajuster pour s'adapter aux nouvelles marges */
-    left: 5px;
-    width: calc(50% - 7px); /* Ajustement pour les marges des deux côtés */
-    height: calc(100% - 10px); /* Pour occuper toute la hauteur du toggle */
-    background-color: #000;
-    border-radius: calc(20px - 5px); /* Ajuster le border-radius pour correspondre à la hauteur */
-    transition: left 0.3s ease, width 0.3s ease;
-}
-
-input#selectWhite:checked ~ .slider {
-    left: 5px;
-}
-
-input#selectBlack:checked ~ .slider {
-    left: calc(50% + 2px); /* Ajustement pour les marges des deux côtés */
-}
-
-input#selectWhite:checked + label[for="selectWhite"],
-input#selectBlack:checked + label[for="selectBlack"] {
-    color: #ffffff;
-}
-
-.chess-board {
-    margin: 40px auto 20px auto; /* Ajoutez des marges pour centrer et espacer */
-    max-width: 400px;
-    width: calc(100%-60px); /* Ajoutez cette règle pour que l'élément soit responsive */
-}
-
-.chess-summary {
-    text-align: center;
-    margin-bottom: 60px; /* Espace en dessous du résumé */
-}
-
-#openingName {
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #ffffff;
-    min-height: 1.4em; /* Assure un espace réservé pour le nom de l'ouverture */
-}
-
-.hidden {
-    visibility: hidden; /* Garde l'espace sans afficher le contenu */
-}
-
-.elo-title-container {
-    max-width: 500px; /* Largeur maximale pour correspondre au paragraphe */
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center; /* Aligner le texte à gauche */
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-.elo-title {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-.elo-ratings {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Espace entre les cartes */
-    flex-wrap: wrap;
-}
-
-.elo-card {
-    background: #333;
-    color: #e0e0e0;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px 0;
-    width: 150px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, filter 0.3s ease;
-}
-
-.elo-card.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.elo-card:hover {
-    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1); /* Plus dispersé et plus flou */
-    filter: brightness(1.2);
-    z-index: 10; /* Ensure it appears above the overlay */
-}
-
-.elo-card .emoji {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-.elo-card p {
-    margin: 5px 0;
-    font-size: 1.2em;
-}
-
-.elo-card strong {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 1.2em;
-}
-
-.fide-link {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #000; /* Couleur de fond similaire aux autres éléments */
-    color: #e0e0e0; /* Couleur du texte similaire aux autres éléments */
-    text-decoration: none;
-    border-radius: 15px; /* Coin arrondi pour correspondre aux cartes */
-    font-size: 1.2em;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-}
-
-.fide-link:hover {
-    background-color: #000; /* Légèrement plus clair pour l'effet de survol */
-    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1); /* Effet de survol similaire aux cartes */
-    filter: brightness(1.2); /* Effet de luminosité au survol */
-    z-index: 10; /* Ensure it appears above other content */
-}
-
-.toggle-switch .slider {
-    position: absolute;
-    top: 5px; /* Ajuster pour s'adapter aux nouvelles marges */
-    left: 5px;
-    width: calc(50% - 7px); /* Ajustement pour les marges des deux côtés */
-    height: calc(100% - 10px); /* Pour occuper toute la hauteur du toggle */
-    background-color: #000;
-    border-radius: calc(20px - 5px); /* Ajuster le border-radius pour correspondre à la hauteur */
-    transition: left 0.3s ease, width 0.3s ease;
 }
