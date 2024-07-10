@@ -10,23 +10,30 @@
 </head>
 <body>
     <!-- Contenu principal -->
-    <div id="main-content">
-        <header>
-            <div class="header-content">
-                <div class="image-content">
+    <header id="main-header">
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#passions">Passions</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="profile-info">
+                <div class="profile-image">
                     <img src="img/pp.png" alt="Photo de Mathis BOCHE" class="profile-photo">
                 </div>
-                <div class="text-content">
-                    <h1>MATHIS BOCHE</h1>
-                    <p class="desktop-p">Passionné par les échecs, le tennis et l'IA</p>
-                    <p class="mobile-p">Passionné par les échecs,<br>le tennis et l'IA</p>
+                <div class="profile-text">
+                    <h1 class="name">MATHIS BOCHE</h1>
+                    <p class="tagline">Passionné par les échecs, le tennis et l'IA</p>
                 </div>
             </div>
-            <a href="#about" class="scroll-indicator">
-                &#x25BC; <!-- Unicode character for downwards arrow -->
-            </a>
-        </header>
-    </div>
+            <div class="cta-container">
+                <a href="#about" class="cta-button">Découvrir mon parcours</a>
+            </div>
+        </div>
+    </header>
     
     <!-- Effet de luminescence -->
     <div id="luminescence"></div>
